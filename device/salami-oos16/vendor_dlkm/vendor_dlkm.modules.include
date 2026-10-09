@@ -251,9 +251,7 @@ q6_dlkm.ko
 q6_notifier_dlkm.ko
 q6_pdr_dlkm.ko
 qbt_handler.ko
-qca_cld3_kiwi.ko
 qca_cld3_kiwi_v2.ko
-qca_cld3_qca6490.ko
 qce50_dlkm.ko
 qcedev-mod_dlkm.ko
 qcom-cpufreq-hw-debug.ko
