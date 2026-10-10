@@ -219,7 +219,6 @@ oplus_chg_v2.ko
 oplus_connectivity_routerboost.ko
 oplus_connectivity_sla.ko
 oplus_data_module.ko
-oplus_dns_cache.ko
 oplus_dns_hook.ko
 oplus_fdleak_check.ko
 oplus_freeze_debug.ko
@@ -228,7 +227,6 @@ oplus_ftm_mode.ko
 oplus_game_first.ko
 oplus_gpio.ko
 oplus_hans.ko
-oplus_icc_mcu.ko
 oplus_ipa_thermal.ko
 oplus_kmsg_wb.ko
 oplus_lock_torture.ko
@@ -262,7 +260,6 @@ oplus_subsys_sleep_monitor.ko
 oplus_theia.ko
 oplus_trackpoint_report.ko
 oplus_uprobe.ko
-oplus_vip_task.ko
 oplus_vnet.ko
 oplus_wificapcenter.ko
 oplus_wifismartantenna.ko

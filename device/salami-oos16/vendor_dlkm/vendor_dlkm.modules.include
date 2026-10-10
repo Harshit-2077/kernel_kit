@@ -1,7 +1,5 @@
 adsp_loader_dlkm.ko
 adsp_sleepmon.ko
-aks-adc-joystick.ko
-aks-ads1015.ko
 altmode-glink.ko
 atmel_mxt_ts.ko
 audio_pkt_dlkm.ko
@@ -191,12 +189,10 @@ oplus_chg_v2.ko
 oplus_connectivity_routerboost.ko
 oplus_connectivity_sla.ko
 oplus_data_module.ko
-oplus_dns_cache.ko
 oplus_dns_hook.ko
 oplus_game_first.ko
 oplus_gpio.ko
 oplus_hans.ko
-oplus_icc_mcu.ko
 oplus_lock_torture.ko
 oplus_locking_strategy.ko
 oplus_mdmrst.ko
@@ -218,7 +214,6 @@ oplus_stability_helper.ko
 oplus_stats_calc.ko
 oplus_theia.ko
 oplus_trackpoint_report.ko
-oplus_vip_task.ko
 oplus_vnet.ko
 oplus_wificapcenter.ko
 oplus_wifismartantenna.ko
