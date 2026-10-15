@@ -170,6 +170,7 @@ oplus_binder_strategy.ko
 oplus_bsp_abort_mm_opt.ko
 oplus_bsp_dfr_ubt.ko
 oplus_bsp_dynamic_readahead.ko
+oplus_bsp_smart_freq.ko
 oplus_bsp_eas_opt.ko
 oplus_bsp_frame_boost.ko
 oplus_bsp_fw_update.ko

@@ -115,6 +115,7 @@ shutdown_speed.ko
 cpufreq_health.ko
 horae_shell_temp.ko
 horae_shell_temp.ko
+oplus_bsp_smart_freq.ko
 oplus_bsp_sched_assist.ko
 oplus_bsp_eas_opt.ko
 oplus_bsp_frame_boost.ko
