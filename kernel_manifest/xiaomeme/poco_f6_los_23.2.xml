@@ -11,7 +11,7 @@
     <linkfile dest="kernel_platform/sm8635" src="."/>
     <linkfile dest="kernel_platform/msm-kernel" src="."/>
   </project>
-  <project remote="harshit" name="android_kernel_xiaomi_sm8635-modules" path="vendor" revision="lineage-23.2">
+  <project remote="harshit" name="android_kernel_xiaomi_sm8635-modules" path="sm8635-modules" revision="lineage-23.2">
     <linkfile dest="kernel_platform/vendor" src="."/>
   </project>
   <project remote="clo-la" name="kernel/prebuilts/build-tools" path="kernel_platform/prebuilts/kernel-build-tools" revision="a27755ba41db8a1487c7d2ac7d0da22ec5e593c7" upstream="refs/heads/ks-kernel.lnx.2.0.r1-rel"/>
