@@ -18,3 +18,10 @@ peridot_fix_cfg() {
 }
 
 POST_DEFCONFIG_CMDS=peridot_fix_cfg
+
+clean_kernel_tree() {
+  cd "${KERNEL_DIR}" || cd "${ROOT_DIR}/common"
+  make ARCH=arm64 mrproper || true
+}
+
+PRE_DEFCONFIG_CMDS=clean_kernel_tree
