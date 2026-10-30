@@ -6,22 +6,39 @@ CONFIGS_GKI=(
 export AVBTOOL_GENERATES_FEC_BY_DEFAULT=0
 # kernel_patches/device/peridot-los23.2/build_config/build.config.peridot.los23.2
 
-peridot_fix_cfg() {
-  cd "${KERNEL_DIR}"
-
-  ./scripts/config --enable CONFIG_CAN
-  ./scripts/config --enable CONFIG_CAN_DEV
-  ./scripts/config --enable CONFIG_CAN_VCAN
-
-  ./scripts/config --enable CONFIG_USB_SERIAL
-  ./scripts/config --enable CONFIG_USB_SERIAL_FTDI_SIO
+# compile some features as modules as requied by system_dlkm
+compile_system_dlkm_modules() {
+  ./scripts/config --file arch/arm64/configs/kernel.config \
+     -m CONFIG_BT_HCIBTSDIO \
+     -m CONFIG_USB_SERIAL \
+     -m CONFIG_CAN \
+     -m CONFIG_CAN_DEV \
+     -m CONFIG_CAN_VCAN 
 }
-
-POST_DEFCONFIG_CMDS=peridot_fix_cfg
 
 clean_kernel_tree() {
-  cd "${KERNEL_DIR}" || cd "${ROOT_DIR}/common"
-  make ARCH=arm64 mrproper || true
+    make ARCH=arm64 mrproper || true
 }
 
-PRE_DEFCONFIG_CMDS=clean_kernel_tree
+BOOT_AVBTOOL_PROPS=" \
+com.android.build.boot.os_version:16 \
+com.android.build.boot.fingerprint:POCO/lineage_peridot/peridot:16/BP4A.251205.006/eng.androi:user/release-keys \
+"
+
+VENDOR_BOOT_AVBTOOL_PROPS="com.android.build.vendor_boot.fingerprint:POCO/lineage_peridot/peridot:16/BP4A.251205.006/eng.androi:user/release-keys"
+
+VENDOR_DLKM_AVBTOOL_PROPS=" \
+com.android.build.vendor_dlkm.os_version:16 \
+com.android.build.vendor_dlkm.fingerprint:POCO/lineage_peridot/peridot:16/BP4A.251205.006/eng.androi:user/release-keys \
+"
+
+SYSTEM_DLKM_AVBTOOL_PROPS=" \
+com.android.build.system_dlkm.os_version:16 \
+com.android.build.system_dlkm.fingerprint:POCO/lineage_peridot/peridot:16/BP4A.251205.006/eng.androi:user/release-keys \
+"
+
+# FEC num roots for dlkm partitions
+SYSTEM_DLKM_FEC_NUM_ROOTS="2"
+VENDOR_DLKM_FEC_NUM_ROOTS="2"
+
+PRE_DEFCONFIG_CMDS="clean_kernel_tree; compile_system_dlkm_modules"
