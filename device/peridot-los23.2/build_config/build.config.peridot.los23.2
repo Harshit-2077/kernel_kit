@@ -10,4 +10,25 @@ clean_kernel_tree() {
     make ARCH=arm64 mrproper || true
 }
 
+BOOT_AVBTOOL_PROPS=" \
+com.android.build.boot.os_version:16 \
+com.android.build.boot.fingerprint:POCO/lineage_peridot/peridot:16/BP4A.251205.006/eng.androi:user/release-keys \
+"
+
+VENDOR_BOOT_AVBTOOL_PROPS="com.android.build.vendor_boot.fingerprint:POCO/lineage_peridot/peridot:16/BP4A.251205.006/eng.androi:user/release-keys"
+
+VENDOR_DLKM_AVBTOOL_PROPS=" \
+com.android.build.vendor_dlkm.os_version:16 \
+com.android.build.vendor_dlkm.fingerprint:POCO/lineage_peridot/peridot:16/BP4A.251205.006/eng.androi:user/release-keys \
+"
+
+SYSTEM_DLKM_AVBTOOL_PROPS=" \
+com.android.build.system_dlkm.os_version:16 \
+com.android.build.system_dlkm.fingerprint:POCO/lineage_peridot/peridot:16/BP4A.251205.006/eng.androi:user/release-keys \
+"
+
+# FEC num roots for dlkm partitions
+SYSTEM_DLKM_FEC_NUM_ROOTS="2"
+VENDOR_DLKM_FEC_NUM_ROOTS="2"
+
 PRE_DEFCONFIG_CMDS=clean_kernel_tree
