@@ -7,8 +7,7 @@ export AVBTOOL_GENERATES_FEC_BY_DEFAULT=0
 # kernel_patches/device/peridot-los23.2/build_config/build.config.peridot.los23.2
 
 clean_kernel_tree() {
-  cd "${KERNEL_DIR}" || cd "${ROOT_DIR}/common"
-  make ARCH=arm64 mrproper || true
+    make ARCH=arm64 mrproper || true
 }
 
 PRE_DEFCONFIG_CMDS=clean_kernel_tree
