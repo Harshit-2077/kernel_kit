@@ -6,6 +6,16 @@ CONFIGS_GKI=(
 export AVBTOOL_GENERATES_FEC_BY_DEFAULT=0
 # kernel_patches/device/peridot-los23.2/build_config/build.config.peridot.los23.2
 
+# compile some features as modules as requied by system_dlkm
+compile_system_dlkm_modules() {
+  ./scripts/config --file arch/arm64/configs/kernel.config \
+     -m CONFIG_BT_HCIBTSDIO \
+     -m CONFIG_USB_SERIAL \
+     -m CONFIG_CAN \
+     -m CONFIG_CAN_DEV \
+     -m CONFIG_CAN_VCAN 
+}
+
 clean_kernel_tree() {
     make ARCH=arm64 mrproper || true
 }
@@ -31,4 +41,4 @@ com.android.build.system_dlkm.fingerprint:POCO/lineage_peridot/peridot:16/BP4A.2
 SYSTEM_DLKM_FEC_NUM_ROOTS="2"
 VENDOR_DLKM_FEC_NUM_ROOTS="2"
 
-PRE_DEFCONFIG_CMDS=clean_kernel_tree
+PRE_DEFCONFIG_CMDS="clean_kernel_tree; compile_system_dlkm_modules"
