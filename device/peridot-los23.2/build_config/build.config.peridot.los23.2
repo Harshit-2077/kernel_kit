@@ -6,19 +6,6 @@ CONFIGS_GKI=(
 export AVBTOOL_GENERATES_FEC_BY_DEFAULT=0
 # kernel_patches/device/peridot-los23.2/build_config/build.config.peridot.los23.2
 
-peridot_fix_cfg() {
-  cd "${KERNEL_DIR}"
-
-  ./scripts/config --enable CONFIG_CAN
-  ./scripts/config --enable CONFIG_CAN_DEV
-  ./scripts/config --enable CONFIG_CAN_VCAN
-
-  ./scripts/config --enable CONFIG_USB_SERIAL
-  ./scripts/config --enable CONFIG_USB_SERIAL_FTDI_SIO
-}
-
-POST_DEFCONFIG_CMDS=peridot_fix_cfg
-
 clean_kernel_tree() {
   cd "${KERNEL_DIR}" || cd "${ROOT_DIR}/common"
   make ARCH=arm64 mrproper || true
