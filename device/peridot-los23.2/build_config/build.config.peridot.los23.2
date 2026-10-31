@@ -8,7 +8,7 @@ export AVBTOOL_GENERATES_FEC_BY_DEFAULT=0
 
 # compile some features as modules as requied by system_dlkm
 compile_system_dlkm_modules() {
-  ./scripts/config --file arch/arm64/configs/kernel.config \
+  .${KERNEL_DIR}/scripts/config --file ${KERNEL_DIR}/arch/arm64/configs/kernel.config \
      -m CONFIG_BT_HCIBTSDIO \
      -m CONFIG_USB_SERIAL \
      -m CONFIG_CAN \
@@ -17,7 +17,8 @@ compile_system_dlkm_modules() {
 }
 
 clean_kernel_tree() {
-    make ARCH=arm64 mrproper || true
+    echo " Cleaning kernel source tree"
+    ( cd  ${KERNEL_DIR} && make ARCH=arm64 mrproper )
 }
 
 BOOT_AVBTOOL_PROPS=" \
