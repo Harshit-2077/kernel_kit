@@ -6,19 +6,78 @@ CONFIGS_GKI=(
 export AVBTOOL_GENERATES_FEC_BY_DEFAULT=0
 # kernel_patches/device/peridot-los23.2/build_config/build.config.peridot.los23.2
 
-# compile some features as modules as requied by system_dlkm
+# compile some features as modules as required by system_dlkm
 compile_system_dlkm_modules() {
-  ./${KERNEL_DIR}/scripts/config --file ./${KERNEL_DIR}/arch/arm64/configs/kernel.config \
+  "${KERNEL_DIR}/scripts/config" --file "${KERNEL_DIR}/arch/arm64/configs/kernel.config" \
      -m CONFIG_BT_HCIBTSDIO \
      -m CONFIG_USB_SERIAL \
      -m CONFIG_CAN \
-     -m CONFIG_CAN_DEV \
-     -m CONFIG_CAN_VCAN 
+     -e CONFIG_CAN_DEV \
+     -m CONFIG_CAN_VCAN \
+     -m CONFIG_ZRAM \
+     -m CONFIG_ZSMALLOC \
+     -e CONFIG_BT \
+     -e CONFIG_SERIAL_DEV_BUS \
+     -e CONFIG_SERIAL_DEV_CTRL_TTYPORT \
+     -e CONFIG_BT_HCIUART \
+     -e CONFIG_BT_HCIUART_SERDEV \
+     -e CONFIG_BT_HCIUART_QCA \
+     -e CONFIG_POWER_SEQUENCING \
+     -m CONFIG_BT_QCA \
+     -m CONFIG_BT_HCIUART_BCM \
+     -m CONFIG_BT_HIDP \
+     -m CONFIG_BT_RFCOMM \
+     -m CONFIG_CAN_SLCAN \
+     -m CONFIG_CAN_BCM \
+     -m CONFIG_CAN_GW \
+     -m CONFIG_CAN_RAW \
+     -m CONFIG_PPP \
+     -m CONFIG_PPP_DEFLATE \
+     -m CONFIG_PPP_MPPE \
+     -m CONFIG_PPPOX \
+     -m CONFIG_PPTP \
+     -m CONFIG_PPP_BSDCOMP \
+     -m CONFIG_PPPOL2TP \
+     -m CONFIG_MII \
+     -m CONFIG_USB_USBNET \
+     -m CONFIG_USB_NET_CDCETHER \
+     -m CONFIG_USB_NET_CDC_NCM \
+     -m CONFIG_USB_NET_CDC_EEM \
+     -m CONFIG_USB_NET_CDC_ECM \
+     -m CONFIG_USB_RTL8152 \
+     -m CONFIG_USB_RTL8150 \
+     -m CONFIG_USB_NET_AQC111 \
+     -m CONFIG_USB_NET_ASIX \
+     -m CONFIG_USB_NET_AX88179_178A \
+     -m CONFIG_WWAN \
+     -m CONFIG_USB_ACM \
+     -m CONFIG_USB_SERIAL_FTDI_SIO \
+     -m CONFIG_IKHEADERS \
+     -m CONFIG_CRYPTO_LIB_ARC4 \
+     -m CONFIG_VLAN_8021Q \
+     -m CONFIG_RFKILL \
+     -m CONFIG_TIPC \
+     -m CONFIG_TIPC_DIAG \
+     -m CONFIG_GUNYAH \
+     -m CONFIG_6LOWPAN \
+     -m CONFIG_6LOWPAN_NHC_DEST \
+     -m CONFIG_6LOWPAN_NHC_FRAGMENT \
+     -m CONFIG_6LOWPAN_NHC_HOP \
+     -m CONFIG_6LOWPAN_NHC_IPV6 \
+     -m CONFIG_6LOWPAN_NHC_MOBILITY \
+     -m CONFIG_6LOWPAN_NHC_ROUTING \
+     -m CONFIG_6LOWPAN_NHC_UDP \
+     -m CONFIG_IEEE802154 \
+     -m CONFIG_IEEE802154_6LOWPAN \
+     -m CONFIG_IEEE802154_SOCKET \
+     -m CONFIG_MAC802154 \
+     -m CONFIG_L2TP \
+     -m CONFIG_NFC
 }
 
 clean_kernel_tree() {
     echo " Cleaning kernel source tree"
-    ( cd  ${KERNEL_DIR} && make ARCH=arm64 mrproper )
+    ( cd "${KERNEL_DIR}" && make ARCH=arm64 mrproper )
 }
 
 BOOT_AVBTOOL_PROPS=" \
