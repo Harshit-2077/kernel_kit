@@ -125,12 +125,6 @@ mhi_dev_uci.ko
 mi_fp.ko
 mi_thermal_interface.ko
 minidump.ko
-modules.alias
-modules.blocklist
-modules.dep
-modules.load
-modules.load.recovery
-modules.softdep
 mpam.ko
 msm-mmrm.ko
 msm_dma_iommu_mapping.ko
@@ -306,7 +300,6 @@ usb_f_ccid.ko
 usb_f_cdev.ko
 usb_f_gsi.ko
 usb_f_qdss.ko
-vendor_boot.modules.include
 videocc-pineapple.ko
 videocc-volcano.ko
 wcd_usbss_i2c.ko
