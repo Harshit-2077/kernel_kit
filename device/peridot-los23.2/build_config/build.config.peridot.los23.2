@@ -72,6 +72,10 @@ compile_system_dlkm_modules() {
      -m CONFIG_IEEE802154_SOCKET \
      -m CONFIG_MAC802154 \
      -m CONFIG_L2TP \
+     -m CONFIG_NFC \
+     -d MODULE_SIG \
+     -d MODULE_SIG_FORCE \
+     -d MODULE_SIG_ALL \
      -m CONFIG_NFC
 }
 
